@@ -6,6 +6,8 @@ public class PlayerController : MonoBehaviour
 {
     private Rigidbody rb;
 
+    public GameObject playerCam;
+
     [Header("Movement")]
     private float verticalInput;
     private float horizontalInput;
@@ -21,12 +23,14 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        transform.rotation = playerCam.transform.rotation;
+
         //Moving
         verticalInput = Input.GetAxis("Vertical");
         rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
 
         //Turning
         horizontalInput = Input.GetAxis("Horizontal");
-        transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
+        //transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
     }
 }
