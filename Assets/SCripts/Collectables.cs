@@ -19,8 +19,10 @@ public class Collectables : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            Debug.Log("Pizza Hit!");
             GameObject.Find("CollectableManager").GetComponent<CollectableManager>().UpdateCount();
             Destroy(gameObject);
+            
         }
     }
 

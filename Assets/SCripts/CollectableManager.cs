@@ -22,9 +22,22 @@ public class CollectableManager : MonoBehaviour
 
     public void UpdateCount()
     {
+        StartCoroutine(DelayedUpdateCount());
+    }
+
+    public IEnumerator DelayedUpdateCount()
+    {
+        Debug.Log("Updating!");
+        yield return new WaitForEndOfFrame();
+
+        foreach (GameObject pizza in GameObject.FindGameObjectsWithTag("Pizza"))
+        {
+            Debug.Log("I found a pizza named " + pizza.name);
+        }
+
         numberOfPizzas = GameObject.FindGameObjectsWithTag("Pizza").Length;
         collectableDisplay.text = $"Pizzas Left: {numberOfPizzas}";
-        if(numberOfPizzas <= 0)
+        if (numberOfPizzas <= 0)
         {
             AllDone();
         }
