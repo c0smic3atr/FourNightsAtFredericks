@@ -19,6 +19,7 @@ public class Collectables : MonoBehaviour
     {
         if(other.gameObject.CompareTag("Player"))
         {
+            GameObject.Find("CollectableManager").GetComponent<CollectableManager>().UpdateCount();
             Destroy(gameObject);
         }
     }
