@@ -15,14 +15,15 @@ public class Collectables : MonoBehaviour
     {
         
     }
-    private void OnTriggerEnter(Collider other)
+   
+    private void OnCollisionEnter(Collision collision)
     {
-        if(other.gameObject.CompareTag("Player"))
+        if (collision.gameObject.CompareTag("Player"))
         {
             Debug.Log("Pizza Hit!");
             GameObject.Find("CollectableManager").GetComponent<CollectableManager>().UpdateCount();
             Destroy(gameObject);
-            
+
         }
     }
 

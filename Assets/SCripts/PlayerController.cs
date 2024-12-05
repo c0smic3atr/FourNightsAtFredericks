@@ -26,13 +26,19 @@ public class PlayerController : MonoBehaviour
         transform.rotation = playerCam.transform.rotation;
 
         //Moving
-        verticalInput = Input.GetAxis("Vertical");
-        rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
+        //verticalInput = Input.GetAxis("Vertical");
+       // rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
 
         //Turning
         horizontalInput = Input.GetAxis("Horizontal");
         //transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
     }
 
-    
+    private void FixedUpdate()
+    {
+        verticalInput = Input.GetAxis("Vertical");
+        rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
+    }
+
+
 }
