@@ -13,6 +13,7 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     public float moveSpeed;
     public float turnSpeed;
+    public bool isGameActive = true;
 
     // Start is called before the first frame update
     void Start()
@@ -36,6 +37,7 @@ public class PlayerController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        
         verticalInput = Input.GetAxis("Vertical");
         rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
     }

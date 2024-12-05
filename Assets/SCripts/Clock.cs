@@ -10,10 +10,13 @@ public class Clock : MonoBehaviour
     public bool isRunning;
     public TextMeshProUGUI clockDisplay;
 
+    private GameManager gm;
+
     // Start is called before the first frame update
     void Start()
     {
         StartCoroutine(CountDown());
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
@@ -46,6 +49,7 @@ public class Clock : MonoBehaviour
     {
         isRunning = false;
         Debug.Log("Timer done!!!!!!!!! STOP PLAYING ^_^");
+        gm.GameOver();
     }
 
     //update display
