@@ -13,33 +13,42 @@ public class PlayerController : MonoBehaviour
     private float horizontalInput;
     public float moveSpeed;
     public float turnSpeed;
-    public bool isGameActive = true;
+    private GameManager gm;
 
     // Start is called before the first frame update
     void Start()
     {
         rb = GetComponent<Rigidbody>();
+        gm = GameObject.Find("GameManager").GetComponent<GameManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.rotation = playerCam.transform.rotation;
+        if(gm.isGameRunning)
+        {
+            transform.rotation = playerCam.transform.rotation;
+            //Turning
+            //horizontalInput = Input.GetAxis("Horizontal");
 
-        //Moving
-        //verticalInput = Input.GetAxis("Vertical");
-       // rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
+        }
+        
 
-        //Turning
-        horizontalInput = Input.GetAxis("Horizontal");
-        //transform.Rotate(Vector3.up * turnSpeed * horizontalInput * Time.deltaTime);
+        
+
+        
+        
     }
 
     private void FixedUpdate()
     {
-        
-        verticalInput = Input.GetAxis("Vertical");
+        if(gm.isGameRunning)
+        {
+            verticalInput = Input.GetAxis("Vertical");
         rb.AddRelativeForce(Vector3.forward * moveSpeed * verticalInput);
+
+        }
+        
     }
 
 
