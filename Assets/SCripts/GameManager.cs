@@ -12,6 +12,8 @@ public class GameManager : MonoBehaviour
     public bool isGameRunning = true;
     public CinemachineVirtualCamera vc;
     public Button restartButton;
+    public TextMeshProUGUI winDisplay;
+    public Button playAgainButton;
 
     // Start is called before the first frame update
     void Start()
@@ -39,4 +41,19 @@ public class GameManager : MonoBehaviour
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         vc.enabled = true;
     }
+
+    public void WinnersLoveWinning()
+    {
+        isGameRunning = false;
+        winDisplay.gameObject.SetActive(true);
+        playAgainButton.gameObject.SetActive(true);
+    }
+
+    public void PlayAgain()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        vc.enabled = true;
+    }
+    
+
 }
